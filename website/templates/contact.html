@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block meta_desc %}Contact us at {% endblock meta_desc %}
+{% block title %}Contact |{% endblock title %}
+
+
+{% block content %}
+
+  <!-- ***** Contact Area Start ***** -->
+  {% if message_name %} 
+    <center>
+    <br><br><br>
+      <h3>Thanks {{message_name}}</h3>
+      <p>We have recieved your mail successfully and will contact you shortly.</p>
+    </center>
+    <br><br><br>
+  {% else %}
+
+  <section class="dento-contact-area mt-50 mb-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="google-maps mb-100">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15074.470846995357!2d73.0737655!3d19.1682042!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x90dcc712308303a1!2sPalava%20City%20by%20LODHA!5e0!3m2!1sen!2sin!4v1589992274204!5m2!1sen!2sin"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Contact Information -->
+        <div class="col-12 col-md-4">
+          <div class="contact-information">
+            <h5>Address</h5>
+            <p>28 Jackson Street, Chicago, 7788569 USA</p>
+
+            <h5>Phone</h5>
+            <p>+84. 2252. 2250. 122</p>
+
+            <h5>Fax</h5>
+            <p>+84. 2252. 2250. 125</p>
+
+            <h5>Email</h5>
+            <p class="mb-0">info.dento@gmail.com</p>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="col-12 col-md-8">
+          <div class="contact-form">
+            <!-- Section Heading -->
+            <div class="section-heading">
+              <h2>Get In Touch</h2>
+              <div class="line"></div>
+            </div>
+            <!-- Form -->
+            <form action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+              <div class="row">
+                <div class="col-lg-6">
+                  <input type="text" name="message-name" class="form-control mb-30" placeholder="Your Name">
+                </div>
+                <div class="col-lg-6">
+                  <input type="email" name="message-email" class="form-control mb-30" placeholder="Your Email">
+                </div>
+                <div class="col-12">
+                  <textarea name="message" class="form-control mb-30" placeholder="Your Message"></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn dento-btn">Send Message</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  <!-- ***** Contact Area End ***** -->
+
+{% endblock content %}
